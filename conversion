@@ -1,0 +1,96 @@
+#include<stdio.h>
+int main()
+{
+    int n;
+    int i;
+    char hex[10];
+    printf("Enter any number you want to covert\n");
+    scanf("%d",&n);
+    printf("In what you want to convert to decimal as follows\n");
+    printf("1 for Binary ,2 for octal , 3 for hexadecimal\n");
+    scanf("%d",&i);
+    switch(i)
+    {
+        case 1:
+        {int rem,sum=0,num=0;
+            while(n>0)
+            {
+                rem=n%2;
+                sum=sum*10+rem;
+                n=n/2;
+            }
+            while(sum>0)
+            {
+                num=num*10+(sum%10);
+                sum=sum/10;
+            }
+            printf("The converted number is %d",num);
+            break;
+        }
+         case 2:
+        {int rem,sum=0,num=0;
+            while(n>=7)
+            {
+                rem=n%8;
+                sum=sum*10+rem;
+                n=n/8;
+            }
+            while(sum>0)
+            {
+                num=num*10+(sum%10);
+                sum=sum/10;
+            }
+            printf("The converted number is %d",num);
+            break;
+        } case 3:
+        {
+          	while(n>0)
+	{
+		int rem;
+		for(int i=0;i<10;i++)
+		{
+			rem=n%16;
+			if(rem<9)
+			{
+			hex[i]=rem;
+		}
+		else if(rem==10)
+		{
+			hex[i]='A';
+		}
+			else if(rem==11)
+		{
+	        hex[i]='B';
+		}
+			else if(rem==12)
+		{
+			hex[i]='C';
+		}
+			else if(rem==13)
+		{
+			hex[i]='D';
+		}
+			else if(rem==14)
+		{
+			hex[i]='E';
+		}
+		else
+		{
+			hex[i]='F';
+		}
+			n=n/16;
+	}
+	}
+	for(int i=10;i>=0;i--)
+	{
+		printf("%c",hex[i]);
+	}
+            break;
+        }
+        default:
+        {
+            printf("Not valid input");
+            break;
+        }
+    }
+}
