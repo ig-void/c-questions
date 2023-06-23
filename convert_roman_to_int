@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<string.h>
+int roman_int(char);
+int main()
+{
+     char a[100];
+     printf("Enter the number in roman\n");
+     scanf("%s",a);
+     int l=strlen(a);
+     int sum=0;
+    for(int i=0;i<l;i++)
+    {
+    	int pre=roman_int(a[i-1]);
+    	int cur=roman_int(a[i]);
+    	int next=roman_int(a[i+1]);
+        if(pre<cur)
+        {
+          sum=sum-pre+(cur-pre);
+        }
+        else
+        sum=sum+cur;
+       
+}
+
+printf("The number in roman is %d",sum);
+}
+int roman_int(char n)
+{ 
+    
+        switch(n)
+		{
+            case 'I':	
+                 return 1;
+                 break;
+            case'V':
+                return 5;
+                break;
+            case'X':
+                return 10;
+                break;
+            case'L':
+                return 50;
+                break;
+            case'C':
+             	return 100;
+             	break;
+           	case'D':
+           		return 500;
+           		break;
+           	case'M':
+           		return 1000;
+           		break;
+		  }
+
+}
